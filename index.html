@@ -8,23 +8,17 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color: #1E293B; }
+body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color: #1E293B; scroll-behavior: smooth; }
 .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
 @media (min-width: 768px) { .chart-container { height: 400px; } }
 .gradient-text { background: linear-gradient(to right, #1E3A8A, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .timeline-dot { width: 24px; height: 24px; border-radius: 50%; background-color: #F59E0B; border: 4px solid #FEF3C7; z-index: 10; position: relative; }
 .timeline-line { position: absolute; left: 11px; top: 24px; bottom: -24px; width: 2px; background-color: #E2E8F0; z-index: 0; }
 .last-line { display: none; }
+.card-hover:hover { transform: translateY(-4px); transition: all 0.3s ease; }
 </style>
 </head>
 <body class="antialiased">
-
-<div style="display:none;" id="metadata-confirmations">
-    PALETTE: Vibrant Blues & Energetic Warm Tones (#1E3A8A, #06B6D4, #F59E0B, #EF4444).
-    PLAN: Hero -> Vision/Metrics -> Roadmap Timeline -> Core Programs -> Location Analysis (Charts) -> Admin/Safety.
-    JUSTIFICATION: Rebranded festival name to "Jeonbuk Our Youth Festival" (JOYF 2026) as requested.
-    CONFIRMATION: NEITHER Mermaid JS NOR SVG were used anywhere in the output. All comments omitted as per critical constraint.
-</div>
 
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,10 +28,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color
                 <span class="font-bold text-xl text-blue-900">JOYF 2026</span>
             </div>
             <div class="hidden md:flex space-x-8">
-                <a href="#vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">비전 및 핵심가치</a>
+                <a href="#vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">비전</a>
                 <a href="#roadmap" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">로드맵</a>
-                <a href="#programs" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">주요 프로그램</a>
-                <a href="#location" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">개최지 분석(예시)</a>
+                <a href="#programs" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">핵심 프로그램</a>
+                <a href="#location" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">개최지 상세분석</a>
+                <a href="#feasibility" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition">타당성 및 제언</a>
             </div>
         </div>
     </div>
@@ -58,66 +53,68 @@ body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color
                 "첫걸음부터 함께, 모든 청년이 만들어가는 미래"
             </p>
             <p class="text-lg text-slate-500 max-w-2xl mx-auto">
-                14개 시군 청년센터의 에너지를 광역 단위로 집결하여, 2036 하계 올림픽 유치 열기를 확산하는 전북 청년 최대의 거버넌스 축제(JOYF) 기획안입니다.
+                <span class="font-bold text-blue-700">전북 원 팀(Jeonbuk One Team)</span>의 정신으로 14개 시군 청년의 에너지를 집결하고 지역 상권과 공생하는 축제를 기획합니다.
             </p>
         </div>
     </div>
 </header>
 
 <main>
+    <!-- 비전 및 핵심가치 섹션 -->
     <section id="vision" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-bold text-slate-800 mb-6">One Team Jeonbuk</h2>
-                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6">Jeonbuk One Team</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">
                     JOYF 2026은 기초지자체별 산발적인 행사를 넘어, 기초와 광역 간의 물리적·심리적 거리를 극복합니다. 9월의 로컬 에너지를 10월의 광역 무대로 승화시켜 전북 청년들의 강력한 연대감을 형성합니다.
                 </p>
-                <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-                    <h3 class="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-8 lg:mb-0">
+                    <h3 class="font-bold text-blue-900 mb-4 flex items-center gap-2">
                         <span>🚀</span> 핵심 추진 동력
                     </h3>
-                    <ul class="space-y-3 mt-4">
+                    <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <span class="text-blue-500 font-bold">01.</span>
                             <span class="text-slate-700">2036 하계 올림픽 유치 열기 확산의 중추적 역할</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-blue-500 font-bold">02.</span>
-                            <span class="text-slate-700">국무조정실 ‘지역특화 청년사업’ 국비 매칭으로 재정 건전성 확보</span>
+                            <span class="text-slate-700">전북도 청년축제 예산 기반의 지방비 확보 및 효율적 운영</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex flex-col items-center justify-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
-                    <div class="text-4xl mb-3">📍</div>
-                    <div class="text-4xl font-black text-blue-600 mb-1">14개</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col items-center justify-center text-center card-hover transition">
+                    <div class="text-4xl mb-4">📍</div>
+                    <div class="text-3xl font-black text-blue-600 mb-1">14개</div>
                     <div class="text-sm font-medium text-slate-500">참여 시·군 센터</div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex flex-col items-center justify-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
-                    <div class="text-4xl mb-3">🤝</div>
-                    <div class="text-4xl font-black text-cyan-500 mb-1">통합</div>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col items-center justify-center text-center card-hover transition">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <div class="text-3xl font-black text-cyan-500 mb-1">통합</div>
                     <div class="text-sm font-medium text-slate-500">광역-기초 거버넌스</div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex flex-col items-center justify-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
-                    <div class="text-4xl mb-3">💰</div>
-                    <div class="text-4xl font-black text-amber-500 mb-1">국비</div>
-                    <div class="text-sm font-medium text-slate-500">센터당 최대 5천만</div>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col items-center justify-center text-center card-hover transition">
+                    <div class="text-4xl mb-4">💰</div>
+                    <div class="text-3xl font-black text-amber-500 mb-1">지방비</div>
+                    <div class="text-sm font-medium text-slate-500">(전북도)</div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex flex-col items-center justify-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
-                    <div class="text-4xl mb-3">🛡️</div>
-                    <div class="text-4xl font-black text-red-500 mb-1">Zero</div>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col items-center justify-center text-center card-hover transition">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <div class="text-3xl font-black text-red-500 mb-1">Zero</div>
                     <div class="text-sm font-medium text-slate-500">안전 사고 목표</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="roadmap" class="bg-white py-16 md:py-24 border-y border-slate-200">
+    <!-- 로드맵 섹션 -->
+    <section id="roadmap" class="bg-slate-50 py-16 md:py-24 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-800 mb-4">JOYF 2026 운영 로드맵</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">9월의 각 지역 예선부터 10월의 광역 통합 결선까지, 단계별로 열기를 고조시키는 체계적인 프로세스입니다.</p>
+                <p class="text-slate-600 max-w-2xl mx-auto">유연한 운영을 통해 시군 에너지를 극대화합니다.</p>
             </div>
             
             <div class="max-w-3xl mx-auto">
@@ -126,13 +123,10 @@ body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color
                         <div class="timeline-dot"></div>
                         <div class="timeline-line"></div>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-6 flex-1 border border-slate-100 shadow-sm">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold text-blue-900">1단계: 로컬 위크 (Local Week)</h3>
-                            <span class="px-3 py-1 bg-white text-blue-600 text-xs font-bold rounded-full border border-blue-100">9월 청년주간</span>
-                        </div>
-                        <p class="text-slate-600 mb-3">14개 시군별 청년의 날 행사 개최 및 JOYF 통합 프로그램 예선전 진행</p>
-                        <div class="text-sm text-slate-500 font-medium">주관: 기초 청년센터</div>
+                    <div class="bg-white rounded-xl p-6 flex-1 border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">1단계: 로컬 위크 (9월)</h3>
+                        <p class="text-slate-800 font-semibold mb-1">전북도 주관 청년의 날 기념식 개최</p>
+                        <p class="text-slate-600">14개 시군별 청년의 날 지역 행사 및 통합 축제 기초 예선 진행</p>
                     </div>
                 </div>
 
@@ -141,154 +135,224 @@ body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color
                         <div class="timeline-dot" style="background-color: #06B6D4; border-color: #CFFAFE;"></div>
                         <div class="timeline-line"></div>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-6 flex-1 border border-slate-100 shadow-sm">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold text-cyan-700">2단계: 붐업 투어 (Boom-up Tour)</h3>
-                            <span class="px-3 py-1 bg-white text-cyan-600 text-xs font-bold rounded-full border border-cyan-100">9월 ~ 10월 초</span>
-                        </div>
-                        <p class="text-slate-600 mb-3">광역 퍼레이드단이 시군 축제를 순회하며 JOYF 홍보 및 올림픽 유치 기원 퍼포먼스 전개</p>
-                        <div class="text-sm text-slate-500 font-medium">주관: 전북자치도 지원</div>
+                    <div class="bg-blue-50 rounded-xl p-6 flex-1 border border-blue-100 shadow-sm">
+                        <h3 class="text-xl font-bold text-cyan-700 mb-2">2단계: 붐업 투어 및 통합 예선전</h3>
+                        <p class="text-blue-700 mb-2 italic text-sm font-semibold">※ 통합 축제를 위한 예선전을 치르는 기간으로도 유연하게 변경 가능</p>
+                        <p class="text-slate-600">전문 퍼레이드단 순회 및 주요 종목 심화 예선 진행</p>
                     </div>
                 </div>
 
                 <div class="flex relative">
                     <div class="mr-6 flex flex-col items-center">
                         <div class="timeline-dot" style="background-color: #EF4444; border-color: #FEE2E2;"></div>
-                        <div class="timeline-line last-line"></div>
                     </div>
                     <div class="bg-red-50 rounded-xl p-6 flex-1 border border-red-100 shadow-md transform scale-105 origin-left">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold text-red-700">3단계: 통합 축제 (Grand Festa)</h3>
-                            <span class="px-3 py-1 bg-white text-red-600 text-xs font-bold rounded-full border border-red-100">10월 23~25일</span>
-                        </div>
-                        <p class="text-slate-700 mb-3">JOYF 2026 광역 통합 기념식, 프로그램 결승전, 대규모 올림픽 유치 기원 통합 퍼레이드 진행</p>
-                        <div class="text-sm text-red-500 font-bold">주관: 전북자치도 (메인 이벤트)</div>
+                        <h3 class="text-xl font-bold text-red-700 mb-2">3단계: 그랜드 페스타 (10월 23~25일)</h3>
+                        <p class="text-slate-700 font-bold">전북 원 팀(Jeonbuk One Team) 통합 결선 및 퍼레이드</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 기초-광역 연계형 핵심 프로그램 섹션 -->
     <section id="programs" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-slate-800 mb-4">기초-광역 연계형 핵심 프로그램</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto">JOYF의 열기를 각 지역에서 광역으로 연결하는 상향식(Bottom-up) 구조를 설계했습니다.</p>
+            <p class="text-slate-600 max-w-3xl mx-auto">JOYF의 열기를 각 지역에서 광역으로 연결하는 상향식(Bottom-up) 구조를 설계했습니다.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-blue-600 hover:shadow-lg transition">
-                <div class="text-4xl mb-4">💡</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-blue-600 hover:shadow-lg transition card-hover flex flex-col h-full">
+                <div class="text-3xl mb-4">💡</div>
                 <h3 class="text-xl font-bold text-slate-800 mb-3">JOYF 정책 경진대회</h3>
-                <p class="text-slate-600 mb-4">시군별 현장 목소리가 담긴 우수 정책 아이디어를 선발하여 10월 통합 행사에서 최종 발표 및 도지사 시상 진행.</p>
-                <div class="mt-auto inline-flex items-center text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-md">
+                <p class="text-slate-600 text-sm mb-4 flex-grow">시군별 현장 목소리가 담긴 우수 정책 아이디어를 선발하여 10월 통합 행사에서 최종 발표 및 도지사 시상 진행.</p>
+                <div class="inline-flex items-center text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-md">
                     국무조정실 제안 체계 연계 (미정)
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-cyan-500 hover:shadow-lg transition">
-                <div class="text-4xl mb-4">🎤</div>
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-cyan-500 hover:shadow-lg transition card-hover flex flex-col h-full">
+                <div class="text-3xl mb-4">🎤</div>
                 <h3 class="text-xl font-bold text-slate-800 mb-3">청춘 재능기부 장기자랑</h3>
-                <p class="text-slate-600 mb-4">기초 센터별 치열한 예선을 통과한 실력파 청년 팀들이 JOYF 메인 무대에서 결승 공연을 펼치는 통합 문화 교류 행사.</p>
-                <div class="mt-auto inline-flex items-center text-sm font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-md">
+                <p class="text-slate-600 text-sm mb-4 flex-grow">기초 센터별 치열한 예선을 통과한 실력파 청년 팀들이 JOYF 메인 무대에서 결승 공연을 펼치는 통합 문화 교류 행사.</p>
+                <div class="inline-flex items-center text-xs font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-md">
                     청년 예술가 네트워크 장
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-amber-500 hover:shadow-lg transition">
-                <div class="text-4xl mb-4">🏃</div>
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-amber-500 hover:shadow-lg transition card-hover flex flex-col h-full">
+                <div class="text-3xl mb-4">🏃</div>
                 <h3 class="text-xl font-bold text-slate-800 mb-3">'청북 런' 마일리지 챌린지</h3>
-                <p class="text-slate-600 mb-4">9월 한 달간 시군별 러닝 기록을 합산하여 순위 산정. 상위 팀을 JOYF 당일 '올림픽 유치 기원 서포터즈'로 임명 및 선봉 배치.</p>
-                <div class="mt-auto inline-flex items-center text-sm font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-md">
+                <p class="text-slate-600 text-sm mb-4 flex-grow">9월 한 달간 시군별 러닝 기록을 합산하여 순위 산정. 상위 팀을 JOYF 당일 올림픽 유치 기원 서포터즈로 임명 및 선봉 배치.</p>
+                <div class="inline-flex items-center text-xs font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-md">
                     팀별 대항전 및 서포터즈
                 </div>
             </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-emerald-500 hover:shadow-lg transition card-hover flex flex-col h-full">
+                <div class="text-3xl mb-4">🍳</div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">전북 청년 요리경연 대회</h3>
+                <p class="text-slate-600 text-sm mb-4 flex-grow">전통문화의전당 내 전문 조리 시설을 활용하여 로컬 푸드 기반의 창업 아이템 시연 및 전국 단위 청년 셰프 경연 개최.</p>
+                <div class="inline-flex items-center text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-md">
+                    로컬 콘텐츠 특화 프로그램
+                </div>
+            </div>
         </div>
 
-        <div class="mt-12 bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-2/3 mb-6 md:mb-0">
-                <div class="inline-block bg-blue-500/30 px-3 py-1 rounded-full text-blue-100 text-sm font-bold mb-4 border border-blue-400/30">
+        <div class="bg-blue-600 rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between overflow-hidden relative">
+            <div class="md:w-2/3 relative z-10">
+                <div class="inline-block bg-blue-500/50 px-3 py-1 rounded-full text-blue-100 text-xs font-bold mb-4 border border-blue-400/30">
                     축제 하이라이트
                 </div>
-                <h3 class="text-2xl font-bold mb-2">2036 올림픽 유치 기원 "Korea One Team" 퍼레이드</h3>
-                <p class="text-blue-100">파견되었던 전문 퍼레이드단이 선두에 서고 14개 시군 청년들이 지역 깃발을 들고 뒤따르는 대규모 통합 입장식을 거행합니다.</p>
+                <h3 class="text-2xl font-bold mb-3">2036 올림픽 유치 기원 "Jeonbuk One Team" 퍼레이드</h3>
+                <p class="text-blue-100 text-sm leading-relaxed">파견되었던 전문 퍼레이드단이 선두에 서고 14개 시군 청년들이 지역 깃발을 들고 뒤따르는 대규모 통합 입장식을 거행합니다.</p>
             </div>
-            <div class="md:w-1/3 flex justify-center">
-                <div class="text-7xl">🎉🥁🚩</div>
+            <div class="md:w-1/3 flex justify-center gap-4 mt-6 md:mt-0 relative z-10">
+                <div class="text-5xl">🥳</div>
+                <div class="text-5xl">🥁</div>
+                <div class="text-5xl">🚩</div>
             </div>
+            <!-- 배경 패턴 (SVG 불가로 아이콘 배치) -->
+            <div class="absolute -right-8 -bottom-8 text-9xl opacity-10">🎊</div>
         </div>
     </section>
 
-    <section id="location" class="bg-slate-100 py-16 md:py-24 border-t border-slate-200">
+    <!-- 개최 후보지 상세 분석 섹션 -->
+    <section id="location" class="bg-slate-50 py-16 md:py-24 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4">개최 후보지 분석 (예시)</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">JOYF 2026의 대규모 퍼레이드와 안전 관리를 기준으로 후보지들을 비교 분석한 예시 데이터입니다.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">개최 후보지 상세 분석</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">시설 활용도와 접근성을 바탕으로 한국전통문화의전당을 최적지로 제안합니다.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200 flex flex-col h-full">
-                    <h3 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
-                        <span>📏</span> 후보지 부지 규모 비교 예시 (m²)
+            <!-- 시각화 차트 영역 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <span>🏛️</span> 시설 및 운영 적합성 (예시)
                     </h3>
-                    <p class="text-sm text-slate-500 mb-6">압도적인 부지 규모 차이는 JOYF 대규모 인파 수용을 위한 필수 요소입니다.</p>
-                    <div class="flex-grow w-full">
-                        <div class="chart-container w-full h-full">
-                            <canvas id="sizeChart"></canvas>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="suitabilityChart"></canvas>
                     </div>
                 </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <span>📊</span> 다각적 비교 지표 (예시)
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </div>
 
-                <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200 flex flex-col h-full">
-                    <h3 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
-                        <span>📊</span> 다각적 적합성 분석 예시
-                    </h3>
-                    <p class="text-sm text-slate-500 mb-6">접근성, 수용력, 퍼레이드 적합성, 안전성 4가지 지표를 비교한 예시 결과입니다.</p>
-                    <div class="flex-grow w-full flex items-center justify-center">
-                        <div class="chart-container w-full" style="max-height: 350px;">
-                            <canvas id="radarChart"></canvas>
-                        </div>
-                    </div>
+            <!-- 추천 사유 상세 카드 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm card-hover transition">
+                    <div class="text-3xl mb-4">🍳</div>
+                    <h4 class="text-xl font-bold text-blue-900 mb-3">전문 시설 우위</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        도내 최대 규모($441m^2$)의 조리체험실(최대 186명 수용)을 활용하여 요리 경연, 한식 창업 팝업 등 청년 콘텐츠 소화 가능
+                    </p>
                 </div>
+                <div class="bg-white p-8 rounded-2xl border border-cyan-100 shadow-sm card-hover transition">
+                    <div class="text-3xl mb-4">🛣️</div>
+                    <h4 class="text-xl font-bold text-cyan-900 mb-3">공간 활용 유연성</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        전당 주변 도로 전면 통제를 통해 대형 메인 무대 및 퍼레이드 공간 확보 가능. 과거 성공 사례를 통한 검증 완료
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-amber-100 shadow-sm card-hover transition">
+                    <div class="text-3xl mb-4">🏘️</div>
+                    <h4 class="text-xl font-bold text-amber-900 mb-3">원도심 파급 효과</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        한옥마을 및 원도심 상권과 인접하여 청년 접근성 탁월. 축제의 열기가 즉각적인 지역 상권 소비로 확산
+                    </p>
+                </div>
+            </div>
+
+            <!-- 요약 테이블 -->
+            <div class="overflow-x-auto bg-white rounded-3xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200">
+                            <th class="p-6 text-sm font-bold text-slate-700">항목</th>
+                            <th class="p-6 text-sm font-bold text-blue-700">한국전통문화의전당 (추천)</th>
+                            <th class="p-6 text-sm font-bold text-slate-700">국립무형유산원</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-slate-100">
+                            <td class="p-6 font-bold bg-slate-50/50">핵심 시설</td>
+                            <td class="p-6">조리실습실(186명), 교육실 등</td>
+                            <td class="p-6">중정($2,200m^2$), 대공연장 등</td>
+                        </tr>
+                        <tr class="border-b border-slate-100">
+                            <td class="p-6 font-bold bg-slate-50/50">콘텐츠 확장성</td>
+                            <td class="p-6 text-blue-700 font-semibold">요리 경연, 한식 팝업 등 복합 프로그램 최적</td>
+                            <td class="p-6">실외 공연 및 전시에 특화</td>
+                        </tr>
+                        <tr class="border-b border-slate-100">
+                            <td class="p-6 font-bold bg-slate-50/50">공간 확보</td>
+                            <td class="p-6">주변 도로 통제 시 대규모 인파 수용 가능</td>
+                            <td class="p-6">부지 자체 활용 높으나 실내 시설 부족</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold bg-slate-50/50 text-slate-700">타당성 평가</td>
+                            <td class="p-6 font-bold text-blue-600">매우 높음 (시설 활용도 우수)</td>
+                            <td class="p-6 text-slate-500">보통 (콘텐츠 제약)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <!-- 행정 및 재정적 타당성 & 결론 섹션 -->
+    <section id="feasibility" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-                <h2 class="text-3xl font-bold text-slate-800 mb-6">행정 및 재정적 타당성</h2>
-                <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8">행정 및 재정적 타당성</h2>
+                <div class="space-y-8">
+                    <!-- 재정 효율성 -->
                     <div class="flex gap-4 items-start">
-                        <div class="mt-1 text-2xl bg-blue-100 w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0">🏛️</div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center flex-shrink-0">
+                            <span class="text-2xl">📈</span>
+                        </div>
                         <div>
-                            <h4 class="text-lg font-bold text-slate-800">중앙정부 국비 연계 전략</h4>
-                            <p class="text-slate-600 text-sm mt-1">JOYF의 '광역-기초 연계 모델'은 국무조정실 지역특화 청년사업 공모의 '전달체계 활성화' 지표에 부합하여 국비 확보에 유리합니다.</p>
+                            <h4 class="text-lg font-bold text-slate-800 mb-1">재정 효율성 및 지역 상생</h4>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                도 예산(1.2억)을 퍼레이드 및 챌린지에 집중 투자하여 기초지자체의 행정 부담을 줄이고, 청년 경제 파급 효과를 창출합니다.
+                            </p>
                         </div>
                     </div>
+                    <!-- Safety First -->
                     <div class="flex gap-4 items-start">
-                        <div class="mt-1 text-2xl bg-cyan-100 w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0">📈</div>
-                        <div>
-                            <h4 class="text-lg font-bold text-slate-800">재정 효율성 및 지역 상생</h4>
-                            <p class="text-slate-600 text-sm mt-1">도 예산(1.2억)을 퍼레이드 및 챌린지에 집중 투자하여 기초지자체의 행정 부담을 줄이고, 청년 경제 파급 효과를 창출합니다.</p>
+                        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0">
+                            <span class="text-2xl">🚨</span>
                         </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <div class="mt-1 text-2xl bg-red-100 w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0">🚨</div>
                         <div>
-                            <h4 class="text-lg font-bold text-slate-800">Safety First 관리 체계</h4>
-                            <p class="text-slate-600 text-sm mt-1">전체 예산의 1% 이상을 안전 관리비로 의무 편성하여 JOYF를 '사고 제로' 축제로 구현합니다.</p>
+                            <h4 class="text-lg font-bold text-slate-800 mb-1">Safety First 관리 체계</h4>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                전체 예산의 1% 이상을 안전 관리비로 의무 편성하여 JOYF를 '사고 제로' 축제로 구현합니다.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-slate-800 text-white rounded-2xl p-8 flex flex-col justify-center text-center shadow-lg relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 text-9xl opacity-10">📣</div>
+
+            <!-- 결론 및 제언 -->
+            <div class="bg-slate-800 rounded-3xl p-8 lg:p-12 text-white shadow-2xl relative overflow-hidden h-full">
+                <!-- 배경 장식 -->
+                <div class="absolute -top-6 -right-6 text-8xl opacity-10 transform rotate-12">📢</div>
+                
                 <h3 class="text-2xl font-bold mb-6 text-blue-300">결론 및 제언</h3>
-                <p class="text-lg leading-relaxed mb-8">
-                    JOYF 2026은 기초와 광역이 하나로 결합하는 <span class="text-amber-400 font-bold">성장형 거버넌스 축제</span>입니다. 청년들이 주도하는 2036 올림픽 유치 염원을 통해 전북의 역동성을 증명하겠습니다.
+                <p class="text-lg text-slate-300 leading-relaxed mb-10">
+                    JOYF 2026은 기초와 광역이 하나로 결합하는 <span class="text-blue-400 font-bold underline underline-offset-4">성장형 거버넌스 축제</span>입니다. 청년들이 주도하는 2036 올림픽 유치 염원을 통해 전북의 역동성을 증명하겠습니다.
                 </p>
-                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
-                    <p class="font-bold text-xl italic">
+                
+                <div class="bg-white/10 rounded-2xl p-6 border border-white/20 backdrop-blur-sm text-center">
+                    <p class="text-xl font-bold italic">
                         "전북의 미래, JOYF 2026으로 하나가 됩니다!"
                     </p>
                 </div>
@@ -297,45 +361,24 @@ body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8FAFC; color
     </section>
 </main>
 
-<footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+<footer class="bg-slate-900 text-slate-400 py-12 text-center">
     <div class="max-w-7xl mx-auto px-4">
-        <p class="text-sm">본 인포그래픽은 JOYF 2026 (Jeonbuk Our Youth Festival) 추진 전략 및 기획(안)을 바탕으로 제작되었습니다.</p>
-        <p class="text-xs mt-2 opacity-50">&copy; 2026 Jeonbuk State Youth Strategy.</p>
+        <p class="text-sm mb-2 font-bold text-slate-300">JOYF 2026: Jeonbuk Our Youth Festival</p>
+        <p class="text-xs opacity-50">&copy; 2026 Jeonbuk State Youth Strategy Group. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const wrapLabel = (label) => label.length <= 16 ? label : [label.slice(0, 16), label.slice(16)];
     
-    const wrapLabel = (label) => {
-        if (label.length <= 16) return label;
-        const words = label.split(' ');
-        const lines = [];
-        let currentLine = '';
-        for (const word of words) {
-            if ((currentLine + word).length > 16) {
-                if (currentLine) lines.push(currentLine.trim());
-                currentLine = word + ' ';
-            } else {
-                currentLine += word + ' ';
-            }
-        }
-        if (currentLine) lines.push(currentLine.trim());
-        return lines;
-    };
-
     const tooltipConfig = {
         plugins: {
             tooltip: {
                 callbacks: {
-                    title: function(tooltipItems) {
-                        const item = tooltipItems[0];
-                        let label = item.chart.data.labels[item.dataIndex];
-                        if (Array.isArray(label)) {
-                            return label.join(' ');
-                        } else {
-                            return label;
-                        }
+                    title: (items) => {
+                        const label = items[0].chart.data.labels[items[0].dataIndex];
+                        return Array.isArray(label) ? label.join('') : label;
                     }
                 }
             }
@@ -345,90 +388,54 @@ document.addEventListener('DOMContentLoaded', () => {
     Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
     Chart.defaults.color = '#64748B';
 
-    
-    const rawLabelsSize = ["한국전통문화의전당 (원도심형)", "국립무형유산원 (대규모 집객형)"];
-    const processedLabelsSize = rawLabelsSize.map(wrapLabel);
-
-    const ctxSize = document.getElementById('sizeChart').getContext('2d');
-    new Chart(ctxSize, {
+    const ctxSuitability = document.getElementById('suitabilityChart').getContext('2d');
+    new Chart(ctxSuitability, {
         type: 'bar',
         data: {
-            labels: processedLabelsSize,
+            labels: ["한국전통문화의전당", "국립무형유산원"].map(wrapLabel),
             datasets: [{
-                label: '부지 규모 (m²)',
-                data: [8710, 59930],
-                backgroundColor: ['#94A3B8', '#06B6D4'],
-                borderRadius: 6,
-                borderSkipped: false
+                label: '운영 적합성 지수 (예시)',
+                data: [95, 74],
+                backgroundColor: ['#06B6D4', '#94A3B8'],
+                borderRadius: 8
             }]
         },
         options: {
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: tooltipConfig.plugins.tooltip
-            },
-            scales: {
-                x: {
-                    grid: { display: false, drawBorder: false },
-                    ticks: { callback: (val) => val.toLocaleString() + 'm²' }
-                },
-                y: {
-                    grid: { display: false, drawBorder: false }
-                }
-            }
+            plugins: { legend: { display: false }, ...tooltipConfig.plugins },
+            scales: { x: { min: 0, max: 100 } }
         }
     });
-
-    
-    const rawLabelsRadar = ["도심/시민 접근성", "대규모 인원 수용력", "통합 퍼레이드 적합성", "인파 안전 관리"];
-    const processedLabelsRadar = rawLabelsRadar.map(wrapLabel);
 
     const ctxRadar = document.getElementById('radarChart').getContext('2d');
     new Chart(ctxRadar, {
         type: 'radar',
         data: {
-            labels: processedLabelsRadar,
+            labels: ["전문 시설", "공간 확장성", "원도심 접근성", "상권 파급 효과"].map(wrapLabel),
             datasets: [
                 {
-                    label: '후보지 A (예시)',
-                    data: [5, 2, 2, 3],
-                    backgroundColor: 'rgba(148, 163, 184, 0.2)',
-                    borderColor: '#94A3B8',
-                    pointBackgroundColor: '#94A3B8',
-                    borderWidth: 2
+                    label: '한국전통문화의전당',
+                    data: [5, 4.5, 5, 5],
+                    backgroundColor: 'rgba(6, 182, 212, 0.3)',
+                    borderColor: '#06B6D4',
+                    pointBackgroundColor: '#06B6D4'
                 },
                 {
-                    label: '후보지 B (예시)',
-                    data: [3, 5, 5, 5],
-                    backgroundColor: 'rgba(6, 182, 212, 0.4)',
-                    borderColor: '#06B6D4',
-                    pointBackgroundColor: '#06B6D4',
-                    borderWidth: 2
+                    label: '국립무형유산원',
+                    data: [3, 5, 2.5, 3],
+                    backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                    borderColor: '#94A3B8',
+                    pointBackgroundColor: '#94A3B8'
                 }
             ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
-                r: {
-                    min: 0,
-                    max: 5,
-                    ticks: { stepSize: 1, display: false },
-                    grid: { color: '#E2E8F0' },
-                    pointLabels: {
-                        font: { size: 12, weight: '600' },
-                        color: '#475569'
-                    }
-                }
-            },
-            plugins: {
-                legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },
-                tooltip: tooltipConfig.plugins.tooltip
-            }
+            scales: { r: { min: 0, max: 5, ticks: { display: false } } },
+            plugins: { ...tooltipConfig.plugins }
         }
     });
 });
